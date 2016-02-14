@@ -1,0 +1,26 @@
+<erl>
+out(Arg) ->
+    % Figure out the name of the queue that was requested, as well as the actual
+    % request URL, so that we can build our feed XML.
+
+    RequestURL = yaws_api:format_url(yaws_api:request_url(Arg)),
+    QueueName = list_to_atom(Arg#arg.querydata),
+
+    % Make sure the specified name actually corresponds to a queue!  If not, we
+    % simply report a 404 "Not Found" response.
+    QPid = whereis(QueueName),
+    if
+        QPid == undefined ->
+            [{status, 404},
+             {html, [io_lib:format("<h1>404 Queue ~p Not Found</h1>", [QueueName]),
+                     io_lib:format("<p>No queue with name ~p on this server.</p>",
+                         [QueueName])
+                    ]
+             }];
+
+        true ->
+            {content, "application/xhtml+xml",      % "application/rss+xml",
+             rss_queue:get_feed_xml(QueueName, RequestURL) }
+    end.
+</erl>
+
