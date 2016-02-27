@@ -3,7 +3,7 @@
 -export ([prime_factors/1]).
 -export ([find_square_multiples/2]).
 
-is_prime(N) when N > 2 -> is_prime(N, trunc(math:sqrt(N))).
+is_prime(N) -> is_prime(N, trunc(math:sqrt(N))).
 
 is_prime(1, _) -> true;
 is_prime(2, _) -> true;
