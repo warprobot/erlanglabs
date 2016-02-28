@@ -18,7 +18,7 @@ is_prime(N, Cnt) ->
 prime_factors(N) -> prime_factors(N, 2).
 prime_factors(1, _) -> [];
 prime_factors(N, Divider) when N rem Divider =/= 0 -> prime_factors(N, Divider + 1);
-prime_factors(N, Divider) when N rem Divider == 0 -> [ Divider | prime_factors(N div Divider, 2) ].
+prime_factors(N, Divider) when N rem Divider =:= 0 -> [Divider | prime_factors(N div Divider, 2) ].
 
 
 is_square_multiple(N) ->
