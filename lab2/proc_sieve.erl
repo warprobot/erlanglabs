@@ -1,16 +1,24 @@
 -module(proc_sieve).
 -compile(export_all).
 
-sieve(N, ReqPid, gather) ->
+generate(MaxN)->
+	Pid = spawn(?MODULE, sieve, []),
+	[ Pid ! X || X <- lists:seq(2, MaxN) ], % [2..MaxN]
+	Pid ! {done, self()},
 	receive 
-		X -> ReqPid ! [N|X]
+		Result -> Result
+	end.
+
+sieve()->
+	receive
+		_N -> sieve(_N, undefined)
 	end.
 
 sieve(N, undefined)->
 	receive
 		{done, ReqPid} -> ReqPid ! [N];
 		Num -> NextPid = case Num rem N of
-			0 -> undefined ; 
+			0 -> undefined;
 			_ ->
 				Pid = spawn(proc_sieve, sieve, []),
 				Pid ! Num,
@@ -18,6 +26,7 @@ sieve(N, undefined)->
 			end,
 			sieve(N, NextPid)
 	end;
+
 sieve(N, NextPid)->
 	receive
 		{done, ReqPid} ->
@@ -31,17 +40,9 @@ sieve(N, NextPid)->
 			sieve(N, NextPid)
 	end.
 
-sieve()->
-	receive
-		_N -> sieve(_N, undefined)
-	end.
-
-generate(MaxN)->
-	Pid = spawn(?MODULE, sieve, []),
-	[ Pid ! X || X <- lists:seq(2, MaxN) ], % [2..MaxN]
-	Pid ! {done, self()},
+sieve(N, ReqPid, gather) ->
 	receive 
-		Result -> Result
+		X -> ReqPid ! [N|X]
 	end.
 
 gen_print(MaxN) -> 
