@@ -1,68 +1,74 @@
 -module(rss_queue).
 
 -import(xmerl_xpath, [string/2]).
--include ("../lab3/rss_parse.erl").
+% -include("../lab3/rss_parse.erl").
 
 -compile(export_all).
 -define(TIMEOUT, 10000).
 
-
-server(Queue, Subs)->
-	receive
-		{add_item, RSSItem} ->
-			NewQueue = queue_push(RSSItem, Queue, Subs),
-			server(NewQueue, Subs);
-
-		{get_all, ReqPid} ->
-			ReqPid ! {self(), Queue},
-			server(Queue,Subs);
-
-		_Msg -> io:format("Unknown msg~p~n",[_Msg])	
-	end.
+init([]) ->
+  start().
 
 start() ->
-	Queue = [],
-	spawn(?MODULE, server, [Queue, sets:new()]).
+  Queue = [],
+  spawn(?MODULE, server, [Queue]).
 
-init([]) -> start().
+server(Queue) ->
+  receive
+    {add_item, RSSItem} ->
+      UpdatedQueue = push_item(RSSItem, Queue),
+      server(UpdatedQueue);
+    {get_all, RegPid} ->
+      RegPid ! {self(), Queue},
+      server(Queue)
+  end.
 
-add_item(QPid,Item)->
-	QPid ! {add_item,Item},
-	ok.
+search_item(RSSItem, []) ->
+  {different, RSSItem};
 
-queue_push(NewItem, L1, [], Subs)->
-	broadcast(NewItem, Subs),
-	L1++[NewItem];
+search_item(RSSItem, Queue) ->
+  [Head | Tail] = Queue,
+  case rss_parse:compare_feed_items(RSSItem, Head) of
+    same -> {same, Head};
+    updated -> {updated, Head};
+    different -> search_item(RSSItem, Tail)
+  end.
 
-queue_push(NewItem, L1, L = [OldItem|Rest], Subs)->
-	case rss_parse:compare_feed_items(OldItem,NewItem) of
-		same -> 
-			L1++L ;
-		updated -> 
-			 broadcast(NewItem,Subs), L1++Rest++[NewItem] ;
-		different -> 
-			queue_push(NewItem,L1++[OldItem],Rest,Subs)
-	end.
-queue_push(NewItem,Queue,Subs)-> queue_push(NewItem,[],Queue,Subs).
+push_item(RSSItem, Queue) ->
+  {State, FoundItem} = search_item(RSSItem, Queue),
+  case State of
+    same -> Queue;
+    updated ->
+      Queue = Queue--[FoundItem],
+      lists:sort(fun date_comporator/2, Queue++[RSSItem]);
+    different ->
+      lists:sort(fun date_comporator/2, Queue++[RSSItem])
+  end.
 
-add_feed(QPid, RSS2Feed)->
-	Items = rss_parse:get_feed_items(RSS2Feed),
-	[add_item(QPid,Item) || Item <- Items], 
-	ok.
+date_comporator(A, B) ->
+  rss_parse:get_item_time(A) < rss_parse:get_item_time(B).
 
-add_feed_from_file(QPid,File)->
-	Items=rss_parse:get_feed_items_test(File),
-	[add_item(QPid,Item) || Item <- Items], 
-	ok.
+add_item(QPid, Item)
+    when is_pid(QPid) ->
+      QPid ! {add_item, Item},
+      ok.
 
-get_all(QPid)->
-	QPid ! {get_all, self()},
-	receive
-		{QPid, Queue} -> Queue;
-		_Msg -> {error, unknown_msg, _Msg}
-	after 
-		? TIMEOUT -> {error, timeout}
-	end.
+add_feed(QPid, RSS2Feed) ->
+  case rss_parse:is_rss2_feed(RSS2Feed) of
+    true ->
+      Items = rss_parse:get_feed_items(RSS2Feed),
+      lists:foreach(fun(Item) ->
+                        add_item(QPid, Item)
+                    end, Items),
+      ok;
+    false ->
+      not_ok
+  end.
 
-broadcast(Item, PidSet) ->
-	[add_item(Pid, Item) || Pid <- sets:to_list(PidSet)].
+get_all(QPid) when is_pid(QPid) ->
+  QPid ! {get_all, self()},
+  receive 
+    {ok, List} -> List
+  after ?TIMEOUT ->
+    {error, timeout}
+  end.
