@@ -78,8 +78,8 @@ is_updated(OldItem, NewItem, XPathAttr) ->
 			case NewAttrValue of
 				[] -> false ;
 				_ ->
-					[OldGUID] = OldAttrValue
-					,[NewGUID] = NewAttrValue
-					,OldGUID == NewGUID
+					[OldGUID] = OldAttrValue,
+					[NewGUID] = NewAttrValue,
+					OldGUID == NewGUID
 			end
 	end.
