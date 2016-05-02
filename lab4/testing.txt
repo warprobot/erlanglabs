@@ -1,0 +1,48 @@
+
+test(RSSFile) ->
+  PID = rss_queue:start(),
+  {XML, _} = xmerl_scan:file(RSSFile),
+  add_feed(PID, XML),
+  get_all(PID).
+
+
+
+1> rss_queue:test("digg-science-rss2.xml").
+[{xmlElement,item,item,[],
+             {xmlNamespace,[],
+                           [{"digg",'http://digg.com/docs/diggrss/'},
+                            {"media",'http://search.yahoo.com/mrss/'},
+                            {"feedburner",
+                             'http://rssnamespace.org/feedburner/ext/1.0'}]},
+             [{channel,2},{rss,1}],
+             88,[],
+             [{xmlText,[{item,88},{channel,2},{rss,1}],1,[],"\n   ",text},
+              {xmlElement,title,title,[],
+                          {xmlNamespace,[],
+                                        [{"digg",'http://digg.com/docs/diggrss/'},
+                                         {"media",'http://search.yahoo.com/mrss/'},
+                                         {"feedburner",
+                                          'http://rssnamespace.org/feedburner/ext/1.0'}]},
+                          [{item,88},{channel,2},{rss,1}],
+                          2,[],
+                          [{xmlText,[{title,2},{item,88},{channel,2},{rss,...}],
+                                    1,[]," Teleportation Milestone Achieved",text}],
+                          [],".",undeclared},
+              {xmlText,[{item,88},{channel,2},{rss,1}],3,[],"\n   ",text},
+              {xmlElement,link,link,[],
+                          {xmlNamespace,[],
+                                        [{"digg",'http://digg.com/docs/diggrss/'},
+                                         {"media",'http://search.yahoo.com/mrss/'},
+                                         {"feedburner",
+                                          'http://rssnamespace.org/feedburner/ext/1.0'}]},
+                          [{item,88},{channel,2},{rss,1}],
+                          4,[],
+                          [{xmlText,[{link,4},{item,...},{...}|...],1,[],[...],...}],
+                          [],".",undeclared},
+              {xmlText,[{item,88},{channel,2},{rss,1}],5,[],"\n   ",text},
+              {xmlElement,description,description,[],
+
+
+
+
+and so on.

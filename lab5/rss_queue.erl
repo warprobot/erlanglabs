@@ -6,23 +6,40 @@
 -define(TIMEOUT, 1000).
 
 init([]) ->
-  start().
+  start();
+
+init([Url]) ->
+  start(Url).
+
 
 %% @doc Старт сервера
 start() ->
   Queue = [],
-  spawn(?MODULE, server, [Queue]).
+  Subscribers = sets:new(),
+  spawn(?MODULE, server, [Queue, Subscribers]).
+
+start(Url)->
+  QPid = start(),
+  rss_reader:start(Url,QPid),
+  QPid.
 
 %% @doc Основный цикл программы, который слушает события
 %% {add_item, RSSItem} и {get_all, RegPid}
-server(Queue) ->
+server(Queue, Subscribers) ->
   receive
     {add_item, RSSItem} ->
-      UpdatedQueue = push_item(RSSItem, Queue),
-      server(UpdatedQueue);
+      UpdatedQueue = push_item(RSSItem, Queue, Subscribers),
+      server(UpdatedQueue, Subscribers);
     {get_all, RegPid} ->
       RegPid ! {self(), Queue},
-      server(Queue)
+      server(Queue, Subscribers);
+    {unsubscribe, QPid} ->
+      server(Queue, sets:del_element(QPid,Subscribers));
+    {subscribe, QPid} ->
+      [add_item(QPid,Item) || Item <- Queue],
+      server(Queue, sets:add_element(QPid,Subscribers));
+    {'DOWN',_ , _, QPid, _} ->
+      server(Queue, sets:del_element(QPid,Subscribers))
   end.
 
 %% @doc Поиск в листе элемента
@@ -38,15 +55,21 @@ search_item(RSSItem, Queue) ->
     different -> search_item(RSSItem, Tail)
   end.
 
+%% @doc Широковещательное сообщение
+broadcast(Item, PidSet)->
+  [ add_item(Pid,Item) || Pid <- sets:to_list(PidSet) ].
+
 %% @doc Добавление RSS-элемента очередь
-push_item(RSSItem, Queue) ->
+push_item(RSSItem, Queue, Subscribers) ->
   {State, FoundItem} = search_item(RSSItem, Queue),
   case State of
     same -> Queue;
     updated ->
       Queue = Queue--[FoundItem],
+      broadcast(FoundItem, Subscribers),
       lists:sort(fun date_comporator/2, Queue++[RSSItem]);
     different ->
+      broadcast(FoundItem, Subscribers),
       lists:sort(fun date_comporator/2, Queue++[RSSItem])
   end.
 
