@@ -65,9 +65,9 @@ push_item(RSSItem, Queue, Subscribers) ->
   case State of
     same -> Queue;
     updated ->
-      Queue = Queue--[FoundItem],
+      QueueUpdated = Queue--[FoundItem],
       broadcast(FoundItem, Subscribers),
-      lists:sort(fun date_comporator/2, Queue++[RSSItem]);
+      lists:sort(fun date_comporator/2, QueueUpdated++[RSSItem]);
     different ->
       broadcast(FoundItem, Subscribers),
       lists:sort(fun date_comporator/2, Queue++[RSSItem])
@@ -95,7 +95,7 @@ add_feed(QPid, RSS2Feed) ->
 get_all(QPid) when is_pid(QPid) ->
   QPid ! {get_all, self()},
   receive 
-    {ok, List} -> List
+    {QPid, List} -> List
   after ?TIMEOUT ->
     {error, timeout}
   end.

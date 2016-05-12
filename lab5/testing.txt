@@ -1,0 +1,265 @@
+1> rss_queue:start("http://rss.cnn.com/rss/cnn_topstories.rss").
+<0.35.0>
+2>
+=INFO REPORT==== 12-May-2016::18:28:35 ===
+rss_reader <0.47.0>:  Answer by HTTP: 200
+
+=INFO REPORT==== 12-May-2016::18:28:35 ===
+rss_queue <0.47.0>:  add feed
+
+=INFO REPORT==== 12-May-2016::18:28:35 ===
+rss_queue <0.35.0>:  add item
+
+=INFO REPORT==== 12-May-2016::18:28:35 ===
+rss_queue <0.35.0>:  Different
+
+=INFO REPORT==== 12-May-2016::18:28:35 ===
+rss_queue <0.35.0>:  add item
+
+=INFO REPORT==== 12-May-2016::18:28:35 ===
+rss_queue <0.35.0>:  Different
+
+=INFO REPORT==== 12-May-2016::18:28:35 ===
+rss_queue <0.35.0>:  add item
+
+=INFO REPORT==== 12-May-2016::18:28:35 ===
+rss_queue <0.35.0>:  Different
+
+=INFO REPORT==== 12-May-2016::18:28:35 ===
+rss_queue <0.35.0>:  add item
+
+=INFO REPORT==== 12-May-2016::18:28:35 ===
+rss_queue <0.35.0>:  Different
+
+=INFO REPORT==== 12-May-2016::18:28:35 ===
+rss_queue <0.35.0>:  add item
+
+=INFO REPORT==== 12-May-2016::18:28:35 ===
+rss_queue <0.35.0>:  Different
+
+=INFO REPORT==== 12-May-2016::18:28:35 ===
+rss_queue <0.35.0>:  add item
+
+=INFO REPORT==== 12-May-2016::18:28:35 ===
+rss_queue <0.35.0>:  Different
+
+=INFO REPORT==== 12-May-2016::18:28:35 ===
+rss_queue <0.35.0>:  add item
+
+=INFO REPORT==== 12-May-2016::18:28:35 ===
+rss_queue <0.35.0>:  Different
+
+=INFO REPORT==== 12-May-2016::18:28:35 ===
+rss_queue <0.35.0>:  add item
+
+=INFO REPORT==== 12-May-2016::18:28:35 ===
+rss_queue <0.35.0>:  Different
+
+=INFO REPORT==== 12-May-2016::18:28:35 ===
+rss_queue <0.35.0>:  add item
+
+=INFO REPORT==== 12-May-2016::18:28:35 ===
+rss_queue <0.35.0>:  Different
+
+=INFO REPORT==== 12-May-2016::18:28:35 ===
+rss_queue <0.35.0>:  add item
+
+=INFO REPORT==== 12-May-2016::18:28:35 ===
+rss_queue <0.35.0>:  Different
+
+=INFO REPORT==== 12-May-2016::18:28:35 ===
+rss_queue <0.35.0>:  add item
+
+=INFO REPORT==== 12-May-2016::18:28:35 ===
+rss_queue <0.35.0>:  Different
+
+=INFO REPORT==== 12-May-2016::18:28:35 ===
+rss_queue <0.35.0>:  add item
+
+=INFO REPORT==== 12-May-2016::18:28:35 ===
+rss_queue <0.35.0>:  Different
+
+=INFO REPORT==== 12-May-2016::18:28:35 ===
+rss_queue <0.35.0>:  add item
+
+=INFO REPORT==== 12-May-2016::18:28:35 ===
+rss_queue <0.35.0>:  Different
+
+=INFO REPORT==== 12-May-2016::18:28:35 ===
+rss_queue <0.35.0>:  add item
+
+=INFO REPORT==== 12-May-2016::18:28:35 ===
+rss_queue <0.35.0>:  Different
+
+=INFO REPORT==== 12-May-2016::18:28:35 ===
+rss_queue <0.35.0>:  add item
+
+=INFO REPORT==== 12-May-2016::18:28:35 ===
+rss_queue <0.35.0>:  Different
+
+=INFO REPORT==== 12-May-2016::18:28:35 ===
+rss_queue <0.35.0>:  add item
+
+=INFO REPORT==== 12-May-2016::18:28:35 ===
+rss_queue <0.35.0>:  Different
+
+=INFO REPORT==== 12-May-2016::18:28:35 ===
+rss_queue <0.35.0>:  add item
+
+=INFO REPORT==== 12-May-2016::18:28:35 ===
+rss_queue <0.35.0>:  Different
+
+=INFO REPORT==== 12-May-2016::18:28:35 ===
+rss_queue <0.35.0>:  add item
+
+=INFO REPORT==== 12-May-2016::18:28:35 ===
+rss_queue <0.35.0>:  Different
+
+=INFO REPORT==== 12-May-2016::18:28:35 ===
+rss_queue <0.35.0>:  add item
+
+=INFO REPORT==== 12-May-2016::18:28:35 ===
+rss_queue <0.35.0>:  Different
+
+=INFO REPORT==== 12-May-2016::18:28:35 ===
+rss_queue <0.35.0>:  add item
+
+=INFO REPORT==== 12-May-2016::18:28:35 ===
+rss_queue <0.35.0>:  Different
+
+=INFO REPORT==== 12-May-2016::18:28:35 ===
+rss_queue <0.35.0>:  add item
+
+=INFO REPORT==== 12-May-2016::18:28:35 ===
+rss_queue <0.35.0>:  Different
+
+=INFO REPORT==== 12-May-2016::18:28:35 ===
+rss_queue <0.35.0>:  add item
+
+=INFO REPORT==== 12-May-2016::18:28:35 ===
+rss_queue <0.35.0>:  Different
+
+=INFO REPORT==== 12-May-2016::18:28:35 ===
+rss_queue <0.35.0>:  add item
+
+=INFO REPORT==== 12-May-2016::18:28:35 ===
+rss_queue <0.35.0>:  Different
+
+=INFO REPORT==== 12-May-2016::18:28:35 ===
+rss_queue <0.35.0>:  add item
+
+=INFO REPORT==== 12-May-2016::18:28:35 ===
+rss_queue <0.35.0>:  Different
+
+=INFO REPORT==== 12-May-2016::18:28:35 ===
+rss_queue <0.35.0>:  add item
+
+=INFO REPORT==== 12-May-2016::18:28:35 ===
+rss_queue <0.35.0>:  Different
+
+=INFO REPORT==== 12-May-2016::18:28:35 ===
+rss_queue <0.35.0>:  add item
+
+=INFO REPORT==== 12-May-2016::18:28:35 ===
+rss_queue <0.35.0>:  Different
+
+=INFO REPORT==== 12-May-2016::18:28:35 ===
+rss_queue <0.35.0>:  add item
+
+=INFO REPORT==== 12-May-2016::18:28:35 ===
+rss_queue <0.35.0>:  Different
+
+=INFO REPORT==== 12-May-2016::18:28:35 ===
+rss_queue <0.35.0>:  add item
+
+=INFO REPORT==== 12-May-2016::18:28:35 ===
+rss_queue <0.35.0>:  Different
+
+=INFO REPORT==== 12-May-2016::18:28:35 ===
+rss_queue <0.35.0>:  add item
+
+=INFO REPORT==== 12-May-2016::18:28:35 ===
+rss_queue <0.35.0>:  Different
+=INFO REPORT==== 12-May-2016::18:28:35 ===
+rss_queue <0.35.0>:  add item
+
+=INFO REPORT==== 12-May-2016::18:28:35 ===
+rss_queue <0.35.0>:  Update
+
+=INFO REPORT==== 12-May-2016::18:28:35 ===
+rss_queue <0.35.0>:  add item
+
+=INFO REPORT==== 12-May-2016::18:28:35 ===
+rss_queue <0.35.0>:  Different
+
+=INFO REPORT==== 12-May-2016::18:28:35 ===
+rss_queue <0.35.0>:  add item
+
+=INFO REPORT==== 12-May-2016::18:28:35 ===
+rss_queue <0.35.0>:  Different
+
+=INFO REPORT==== 12-May-2016::18:28:35 ===
+rss_queue <0.35.0>:  add item
+
+=INFO REPORT==== 12-May-2016::18:28:35 ===
+rss_queue <0.35.0>:  Different
+
+=INFO REPORT==== 12-May-2016::18:28:35 ===
+rss_queue <0.35.0>:  add item
+
+=INFO REPORT==== 12-May-2016::18:28:35 ===
+rss_queue <0.35.0>:  Different
+
+=INFO REPORT==== 12-May-2016::18:28:35 ===
+rss_queue <0.35.0>:  add item
+
+=INFO REPORT==== 12-May-2016::18:28:35 ===
+rss_queue <0.35.0>:  Different
+
+=INFO REPORT==== 12-May-2016::18:28:35 ===
+rss_queue <0.35.0>:  add item
+
+=INFO REPORT==== 12-May-2016::18:28:35 ===
+rss_queue <0.35.0>:  Different
+
+=INFO REPORT==== 12-May-2016::18:28:35 ===
+rss_queue <0.35.0>:  add item
+
+=INFO REPORT==== 12-May-2016::18:28:35 ===
+rss_queue <0.35.0>:  Different
+
+=INFO REPORT==== 12-May-2016::18:28:35 ===
+rss_queue <0.35.0>:  add item
+
+=INFO REPORT==== 12-May-2016::18:28:35 ===
+rss_queue <0.35.0>:  Different
+
+=INFO REPORT==== 12-May-2016::18:28:35 ===
+rss_queue <0.35.0>:  add item
+
+=INFO REPORT==== 12-May-2016::18:28:35 ===
+rss_queue <0.35.0>:  Different
+
+=INFO REPORT==== 12-May-2016::18:28:35 ===
+rss_queue <0.35.0>:  add item
+
+=INFO REPORT==== 12-May-2016::18:28:35 ===
+rss_queue <0.35.0>:  Different
+
+=INFO REPORT==== 12-May-2016::18:28:35 ===
+rss_queue <0.35.0>:  add item
+
+=INFO REPORT==== 12-May-2016::18:28:35 ===
+rss_queue <0.35.0>:  Different
+
+=INFO REPORT==== 12-May-2016::18:28:35 ===
+rss_queue <0.35.0>:  add item
+
+=INFO REPORT==== 12-May-2016::18:28:35 ===
+rss_queue <0.35.0>:  Different
+
+=INFO REPORT==== 12-May-2016::18:28:35 ===
+rss_queue <0.35.0>:  add item
+
+=INFO REPORT==== 12-May-2016::18:28:35 ===
+rss_queue <0.35.0>:  Different

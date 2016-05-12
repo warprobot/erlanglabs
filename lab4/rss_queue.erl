@@ -21,7 +21,7 @@ server(Queue) ->
       UpdatedQueue = push_item(RSSItem, Queue),
       server(UpdatedQueue);
     {get_all, RegPid} ->
-      RegPid ! {ok, Queue},
+      RegPid ! {self(), Queue},
       server(Queue)
   end.
 
@@ -76,18 +76,9 @@ add_feed(QPid, RSS2Feed) ->
 get_all(QPid) when is_pid(QPid) ->
   QPid ! {get_all, self()},
   receive 
-    {ok, List} ->
+    {QPid, List} ->
       ?INFO("Count:~p in PID=~p ~n",[length(List),QPid]),
       List
   after ?TIMEOUT ->
     {error, timeout}
   end.
-
-test() ->
-  PID = start(),
-  {XML, _} = xmerl_scan:file("digg-science-rss2.xml"),
-  {XMLOTHER, _} = xmerl_scan:file("digg-science-rss1.xml"),
-  add_feed(PID, XML),
-  add_feed(PID, XMLOTHER),
-  add_feed(PID, XML),
-  get_all(PID).
