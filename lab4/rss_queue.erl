@@ -3,7 +3,7 @@
 -include("logging.hrl").
 
 -compile(export_all).
--define(TIMEOUT, 1000).
+-define(TIMEOUT, 10000).
 
 init([]) ->
   start().
@@ -21,7 +21,7 @@ server(Queue) ->
       UpdatedQueue = push_item(RSSItem, Queue),
       server(UpdatedQueue);
     {get_all, RegPid} ->
-      RegPid ! {self(), Queue},
+      RegPid ! {ok, Queue},
       server(Queue)
   end.
 
@@ -42,11 +42,15 @@ search_item(RSSItem, Queue) ->
 push_item(RSSItem, Queue) ->
   {State, FoundItem} = search_item(RSSItem, Queue),
   case State of
-    same -> Queue;
+    same ->
+      ?INFO("PUSHED: same item ~p ~n",[self()]),
+      Queue;
     updated ->
-      Queue = Queue--[FoundItem],
-      lists:sort(fun date_comporator/2, Queue++[RSSItem]);
+      QueueUpdated = Queue--[FoundItem],
+      ?INFO("PUSHED: updated item ~p ~n",[self()]),
+      lists:sort(fun date_comporator/2, QueueUpdated++[RSSItem]);
     different ->
+      ?INFO("PUSHED: different item ~p ~n",[self()]),
       lists:sort(fun date_comporator/2, Queue++[RSSItem])
   end.
 
@@ -72,7 +76,18 @@ add_feed(QPid, RSS2Feed) ->
 get_all(QPid) when is_pid(QPid) ->
   QPid ! {get_all, self()},
   receive 
-    {ok, List} -> List
+    {ok, List} ->
+      ?INFO("Count:~p in PID=~p ~n",[length(List),QPid]),
+      List
   after ?TIMEOUT ->
     {error, timeout}
   end.
+
+test() ->
+  PID = start(),
+  {XML, _} = xmerl_scan:file("digg-science-rss2.xml"),
+  {XMLOTHER, _} = xmerl_scan:file("digg-science-rss1.xml"),
+  add_feed(PID, XML),
+  add_feed(PID, XMLOTHER),
+  add_feed(PID, XML),
+  get_all(PID).

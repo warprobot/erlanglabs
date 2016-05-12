@@ -1,48 +1,63 @@
-
-test(RSSFile) ->
-  PID = rss_queue:start(),
-  {XML, _} = xmerl_scan:file(RSSFile),
+%%% функция для тестирования
+test() ->
+  PID = start(),
+  {XML, _} = xmerl_scan:file("digg-science-rss2.xml"),
+  {XMLOTHER, _} = xmerl_scan:file("digg-science-rss1.xml"),
+  add_feed(PID, XML),
+  add_feed(PID, XMLOTHER),
   add_feed(PID, XML),
   get_all(PID).
 
+Ниже приведен частичный лог
+
+Erlang/OTP 18 [erts-7.3] [source] [64-bit] [smp:4:4] [async-threads:10] [hipe] [kernel-poll:false] [dtrace]
+
+Eshell V7.3  (abort with ^G)
+1> rss_queue:test().
+
+=INFO REPORT==== 12-May-2016::22:56:24 ===
+rss_queue <0.35.0>:  PUSHED: different item <0.35.0>
+
+=INFO REPORT==== 12-May-2016::22:56:24 ===
+rss_queue <0.35.0>:  PUSHED: different item <0.35.0>
+
+rss_queue <0.35.0>:  PUSHED: updated item <0.35.0>
+
+=INFO REPORT==== 12-May-2016::22:56:25 ===
+rss_queue <0.35.0>:  PUSHED: updated item <0.35.0>
+
+=INFO REPORT==== 12-May-2016::22:56:25 ===
+rss_queue <0.35.0>:  PUSHED: same item <0.35.0>
+
+=INFO REPORT==== 12-May-2016::22:56:25 ===
+rss_queue <0.35.0>:  PUSHED: updated item <0.35.0>
+
+=INFO REPORT==== 12-May-2016::22:56:25 ===
+rss_queue <0.35.0>:  PUSHED: updated item <0.35.0>
+
+=INFO REPORT==== 12-May-2016::22:56:25 ===
+rss_queue <0.35.0>:  PUSHED: same item <0.35.0>
+
+=INFO REPORT==== 12-May-2016::22:56:25 ===
+rss_queue <0.35.0>:  PUSHED: updated item <0.35.0>
+
+rss_queue <0.35.0>:  PUSHED: updated item <0.35.0>
+
+=INFO REPORT==== 12-May-2016::22:56:25 ===
+rss_queue <0.35.0>:  PUSHED: updated item <0.35.0>
+
+=INFO REPORT==== 12-May-2016::22:56:25 ===
+rss_queue <0.35.0>:  PUSHED: updated item <0.35.0>
 
 
-1> rss_queue:test("digg-science-rss2.xml").
-[{xmlElement,item,item,[],
-             {xmlNamespace,[],
-                           [{"digg",'http://digg.com/docs/diggrss/'},
-                            {"media",'http://search.yahoo.com/mrss/'},
-                            {"feedburner",
-                             'http://rssnamespace.org/feedburner/ext/1.0'}]},
-             [{channel,2},{rss,1}],
-             88,[],
-             [{xmlText,[{item,88},{channel,2},{rss,1}],1,[],"\n   ",text},
-              {xmlElement,title,title,[],
-                          {xmlNamespace,[],
-                                        [{"digg",'http://digg.com/docs/diggrss/'},
-                                         {"media",'http://search.yahoo.com/mrss/'},
-                                         {"feedburner",
-                                          'http://rssnamespace.org/feedburner/ext/1.0'}]},
-                          [{item,88},{channel,2},{rss,1}],
-                          2,[],
-                          [{xmlText,[{title,2},{item,88},{channel,2},{rss,...}],
-                                    1,[]," Teleportation Milestone Achieved",text}],
-                          [],".",undeclared},
-              {xmlText,[{item,88},{channel,2},{rss,1}],3,[],"\n   ",text},
-              {xmlElement,link,link,[],
-                          {xmlNamespace,[],
-                                        [{"digg",'http://digg.com/docs/diggrss/'},
-                                         {"media",'http://search.yahoo.com/mrss/'},
-                                         {"feedburner",
-                                          'http://rssnamespace.org/feedburner/ext/1.0'}]},
-                          [{item,88},{channel,2},{rss,1}],
-                          4,[],
-                          [{xmlText,[{link,4},{item,...},{...}|...],1,[],[...],...}],
-                          [],".",undeclared},
-              {xmlText,[{item,88},{channel,2},{rss,1}],5,[],"\n   ",text},
-              {xmlElement,description,description,[],
+=INFO REPORT==== 12-May-2016::22:56:25 ===
+rss_queue <0.35.0>:  PUSHED: updated item <0.35.0>
 
+=INFO REPORT==== 12-May-2016::22:56:25 ===
+rss_queue <0.35.0>:  PUSHED: updated item <0.35.0>
 
+=INFO REPORT==== 12-May-2016::22:56:25 ===
 
+rss_queue <0.33.0>:  Count:43 in PID=<0.35.0>
 
-and so on.
+2>
