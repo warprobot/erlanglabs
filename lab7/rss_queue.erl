@@ -152,19 +152,18 @@ code_change(_OldVsn, State, _Extra) -> {ok, State}.
 subscribe(From, To) ->
 	gen_server:call(To, {subscribe, From}).
 
-
-	get_feed_xml(QueueName, RequestURL) -> 
-	QPid = whereis(QueueName),
-	{ok, RSSItems} = rss_queue:get_all(QPid),
-	RSSItemXML = lists:flatten(xmerl:export_content(RSSItems, xmerl_xml)),
-	LinkToURL = io_lib:format("<link>~s</link>\n", [RequestURL]),
+get_feed_xml(Name, Request) -> 
+	QPid = whereis(Name),
+	{ok, Feed} = rss_queue:get_all(QPid),
+	RSSItem = lists:flatten(xmerl:export_content(Feed, xmerl_xml)),
+	URL = io_lib:format("<link>~s</link>\n", [Request]),
 	if 
-		is_atom(QueueName) == true ->
-			TitleTag = io_lib:format("<title>~s</title>\n", [QueueName]),
-			DescriptionTag = io_lib:format("<description>Aggregated feed queue from ~s</description>\n", [QueueName]);
+		is_atom(Name) == true ->
+			Title = io_lib:format("<title>~s</title>\n", [Name]),
+			Desc = io_lib:format("<description>Aggregated feed queue from ~s</description>\n", [Name]);
 		true ->
-			TitleTag = io_lib:format("<title>Unknown queue</title>\n", []),
-			DescriptionTag = io_lib:format("<description>Aggregated feed queue</description>\n", [])
+			Title = io_lib:format("<title>Unknown queue</title>\n", []),
+			Desc = io_lib:format("<description>Aggregated feed queue</description>\n", [])
 	end,
 	RSSResponse = 
 		["<?xml version=\"1.0\"?>\n"
@@ -174,10 +173,11 @@ subscribe(From, To) ->
 			" xmlns:dc=\"http://purl.org/dc/elements/1.1/\""
 			" version=\"2.0\">\n"
 			"<channel>\n" ++
-				TitleTag ++
-				DescriptionTag ++
-				LinkToURL ++
-				RSSItemXML ++
+				Title ++
+				Desc ++
+				URL ++
+				RSSItem ++
 			"</channel>\n"
 			"</rss>\n"
-		].
+		],
+	RSSResponse.
