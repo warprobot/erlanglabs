@@ -151,3 +151,33 @@ code_change(_OldVsn, State, _Extra) -> {ok, State}.
 %% @doc подписка
 subscribe(From, To) ->
 	gen_server:call(To, {subscribe, From}).
+
+
+	get_feed_xml(QueueName, RequestURL) -> 
+	QPid = whereis(QueueName),
+	{ok, RSSItems} = rss_queue:get_all(QPid),
+	RSSItemXML = lists:flatten(xmerl:export_content(RSSItems, xmerl_xml)),
+	LinkToURL = io_lib:format("<link>~s</link>\n", [RequestURL]),
+	if 
+		is_atom(QueueName) == true ->
+			TitleTag = io_lib:format("<title>~s</title>\n", [QueueName]),
+			DescriptionTag = io_lib:format("<description>Aggregated feed queue from ~s</description>\n", [QueueName]);
+		true ->
+			TitleTag = io_lib:format("<title>Unknown queue</title>\n", []),
+			DescriptionTag = io_lib:format("<description>Aggregated feed queue</description>\n", [])
+	end,
+	RSSResponse = 
+		["<?xml version=\"1.0\"?>\n"
+			"<rss xmlns:media=\"http://search.yahoo.com/mrss/\""
+			" xmlns:feedburner=\"http://rssnamespace.org/feedburner/ext/1.0\""
+			" xmlns:digg=\"http://digg.com/docs/diggrss/\""
+			" xmlns:dc=\"http://purl.org/dc/elements/1.1/\""
+			" version=\"2.0\">\n"
+			"<channel>\n" ++
+				TitleTag ++
+				DescriptionTag ++
+				LinkToURL ++
+				RSSItemXML ++
+			"</channel>\n"
+			"</rss>\n"
+		].
