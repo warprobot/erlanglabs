@@ -1,12 +1,10 @@
 % A template for implementing gen_server callback modules.
-
-
 -module(genserver_template).
 
 % The server implements the gen_server behavior.
 -behaviour(gen_server).
 -export([init/1, handle_call/3, handle_cast/2, handle_info/2, terminate/2,
-         code_change/3]).
+	code_change/3]).
 
 % Additional helper functions exported by the callback module.
 -export([start/1]).
@@ -31,5 +29,3 @@ handle_info(_Info, State) -> {noreply, State}.
 terminate(_Reason, _State) -> ok.
 
 code_change(_OldVsn, State, _Extra) -> {ok, State}.
-
-

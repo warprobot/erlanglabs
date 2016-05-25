@@ -1,0 +1,391 @@
+~/openSource/erlanglabs/lab6 master*
+❯ erl
+Erlang/OTP 18 [erts-7.3] [source] [64-bit] [smp:4:4] [async-threads:10] [hipe] [kernel-poll:false] [dtrace]
+
+Eshell V7.3  (abort with ^G)
+1> {ok, QPid} = rss_queue:start(bbc_top_stories, "http://newsrss.bbc.co.uk/rss/newsonline_world_edition/front_page/rss.xml").
+{ok,<0.35.0>}
+2>
+=INFO REPORT==== 25-May-2016::10:06:26 ===
+rss_reader <0.47.0>:  URL http://newsrss.bbc.co.uk/rss/newsonline_world_edition/front_page/rss.xml
+
+=INFO REPORT==== 25-May-2016::10:06:26 ===
+rss_queue <0.35.0>:  `update_queue`: different_item
+
+=INFO REPORT==== 25-May-2016::10:06:26 ===
+rss_queue <0.47.0>:  Collection length: 62
+
+=INFO REPORT==== 25-May-2016::10:06:26 ===
+rss_queue <0.35.0>:  `update_queue`: different_item
+
+=INFO REPORT==== 25-May-2016::10:06:26 ===
+rss_queue <0.35.0>:  `update_queue`: different_item
+
+=INFO REPORT==== 25-May-2016::10:06:26 ===
+rss_queue <0.35.0>:  `update_queue`: different_item
+
+=INFO REPORT==== 25-May-2016::10:06:26 ===
+rss_queue <0.35.0>:  `update_queue`: different_item
+
+=INFO REPORT==== 25-May-2016::10:06:26 ===
+rss_queue <0.35.0>:  `update_queue`: different_item
+
+=INFO REPORT==== 25-May-2016::10:06:26 ===
+rss_queue <0.35.0>:  `update_queue`: different_item
+
+=INFO REPORT==== 25-May-2016::10:06:26 ===
+rss_queue <0.35.0>:  `update_queue`: different_item
+
+=INFO REPORT==== 25-May-2016::10:06:26 ===
+rss_queue <0.35.0>:  `update_queue`: different_item
+
+=INFO REPORT==== 25-May-2016::10:06:26 ===
+rss_queue <0.35.0>:  `update_queue`: different_item
+
+=INFO REPORT==== 25-May-2016::10:06:26 ===
+rss_queue <0.35.0>:  `update_queue`: different_item
+
+=INFO REPORT==== 25-May-2016::10:06:26 ===
+rss_queue <0.35.0>:  `update_queue`: different_item
+
+=INFO REPORT==== 25-May-2016::10:06:26 ===
+rss_queue <0.35.0>:  `update_queue`: different_item
+
+=INFO REPORT==== 25-May-2016::10:06:26 ===
+rss_queue <0.35.0>:  `update_queue`: different_item
+
+=INFO REPORT==== 25-May-2016::10:06:26 ===
+rss_queue <0.35.0>:  `update_queue`: different_item
+
+=INFO REPORT==== 25-May-2016::10:06:26 ===
+rss_queue <0.35.0>:  `update_queue`: different_item
+
+=INFO REPORT==== 25-May-2016::10:06:26 ===
+rss_queue <0.35.0>:  `update_queue`: different_item
+
+=INFO REPORT==== 25-May-2016::10:06:26 ===
+rss_queue <0.35.0>:  `update_queue`: different_item
+
+=INFO REPORT==== 25-May-2016::10:06:26 ===
+rss_queue <0.35.0>:  `update_queue`: different_item
+
+=INFO REPORT==== 25-May-2016::10:06:26 ===
+rss_queue <0.35.0>:  `update_queue`: different_item
+
+=INFO REPORT==== 25-May-2016::10:06:26 ===
+rss_queue <0.35.0>:  `update_queue`: different_item
+
+=INFO REPORT==== 25-May-2016::10:06:26 ===
+rss_queue <0.35.0>:  `update_queue`: different_item
+
+=INFO REPORT==== 25-May-2016::10:06:26 ===
+rss_queue <0.35.0>:  `update_queue`: different_item
+
+=INFO REPORT==== 25-May-2016::10:06:26 ===
+rss_queue <0.35.0>:  `update_queue`: different_item
+
+=INFO REPORT==== 25-May-2016::10:06:26 ===
+rss_queue <0.35.0>:  `update_queue`: different_item
+
+=INFO REPORT==== 25-May-2016::10:06:26 ===
+rss_queue <0.35.0>:  `update_queue`: different_item
+
+=INFO REPORT==== 25-May-2016::10:06:26 ===
+rss_queue <0.35.0>:  `update_queue`: different_item
+
+=INFO REPORT==== 25-May-2016::10:06:26 ===
+rss_queue <0.35.0>:  `update_queue`: different_item
+
+=INFO REPORT==== 25-May-2016::10:06:26 ===
+rss_queue <0.35.0>:  `update_queue`: different_item
+
+=INFO REPORT==== 25-May-2016::10:06:26 ===
+rss_queue <0.35.0>:  `update_queue`: different_item
+
+=INFO REPORT==== 25-May-2016::10:06:26 ===
+rss_queue <0.35.0>:  `update_queue`: different_item
+
+=INFO REPORT==== 25-May-2016::10:06:26 ===
+rss_queue <0.35.0>:  `update_queue`: different_item
+
+=INFO REPORT==== 25-May-2016::10:06:26 ===
+rss_queue <0.35.0>:  `update_queue`: different_item
+
+=INFO REPORT==== 25-May-2016::10:06:26 ===
+rss_queue <0.35.0>:  `update_queue`: different_item
+
+=INFO REPORT==== 25-May-2016::10:06:26 ===
+rss_queue <0.35.0>:  `update_queue`: different_item
+
+=INFO REPORT==== 25-May-2016::10:06:26 ===
+rss_queue <0.35.0>:  `update_queue`: different_item
+
+=INFO REPORT==== 25-May-2016::10:06:26 ===
+rss_queue <0.35.0>:  `update_queue`: different_item
+
+=INFO REPORT==== 25-May-2016::10:06:26 ===
+rss_queue <0.35.0>:  `update_queue`: different_item
+
+=INFO REPORT==== 25-May-2016::10:06:26 ===
+rss_queue <0.35.0>:  `update_queue`: different_item
+
+=INFO REPORT==== 25-May-2016::10:06:26 ===
+rss_queue <0.35.0>:  `update_queue`: different_item
+
+=INFO REPORT==== 25-May-2016::10:06:26 ===
+rss_queue <0.35.0>:  `update_queue`: different_item
+
+=INFO REPORT==== 25-May-2016::10:06:26 ===
+rss_queue <0.35.0>:  `update_queue`: different_item
+
+=INFO REPORT==== 25-May-2016::10:06:26 ===
+rss_queue <0.35.0>:  `update_queue`: different_item
+
+=INFO REPORT==== 25-May-2016::10:06:26 ===
+rss_queue <0.35.0>:  `update_queue`: different_item
+
+=INFO REPORT==== 25-May-2016::10:06:26 ===
+rss_queue <0.35.0>:  `update_queue`: different_item
+
+=INFO REPORT==== 25-May-2016::10:06:26 ===
+rss_queue <0.35.0>:  `update_queue`: different_item
+
+=INFO REPORT==== 25-May-2016::10:06:26 ===
+rss_queue <0.35.0>:  `update_queue`: different_item
+
+=INFO REPORT==== 25-May-2016::10:06:26 ===
+rss_queue <0.35.0>:  `update_queue`: different_item
+
+=INFO REPORT==== 25-May-2016::10:06:26 ===
+rss_queue <0.35.0>:  `update_queue`: different_item
+
+=INFO REPORT==== 25-May-2016::10:06:26 ===
+rss_queue <0.35.0>:  `update_queue`: different_item
+
+=INFO REPORT==== 25-May-2016::10:06:26 ===
+rss_queue <0.35.0>:  `update_queue`: different_item
+
+=INFO REPORT==== 25-May-2016::10:06:26 ===
+rss_queue <0.35.0>:  `update_queue`: different_item
+
+=INFO REPORT==== 25-May-2016::10:06:26 ===
+rss_queue <0.35.0>:  `update_queue`: different_item
+
+=INFO REPORT==== 25-May-2016::10:06:26 ===
+rss_queue <0.35.0>:  `update_queue`: different_item
+
+=INFO REPORT==== 25-May-2016::10:06:26 ===
+rss_queue <0.35.0>:  `update_queue`: different_item
+
+=INFO REPORT==== 25-May-2016::10:06:27 ===
+rss_queue <0.35.0>:  `update_queue`: different_item
+
+=INFO REPORT==== 25-May-2016::10:06:27 ===
+rss_queue <0.35.0>:  `update_queue`: different_item
+
+=INFO REPORT==== 25-May-2016::10:06:27 ===
+rss_queue <0.35.0>:  `update_queue`: different_item
+
+=INFO REPORT==== 25-May-2016::10:06:27 ===
+rss_queue <0.35.0>:  `update_queue`: different_item
+
+=INFO REPORT==== 25-May-2016::10:06:27 ===
+rss_queue <0.35.0>:  `update_queue`: different_item
+
+=INFO REPORT==== 25-May-2016::10:06:27 ===
+rss_queue <0.35.0>:  `update_queue`: different_item
+
+=INFO REPORT==== 25-May-2016::10:06:27 ===
+rss_queue <0.35.0>:  `update_queue`: different_item
+
+=INFO REPORT==== 25-May-2016::10:06:36 ===
+rss_reader <0.47.0>:  URL http://newsrss.bbc.co.uk/rss/newsonline_world_edition/front_page/rss.xml
+
+=INFO REPORT==== 25-May-2016::10:06:36 ===
+rss_queue <0.47.0>:  Collection length: 62
+
+=INFO REPORT==== 25-May-2016::10:06:36 ===
+rss_queue <0.35.0>:  `update_queue`: same_item
+
+=INFO REPORT==== 25-May-2016::10:06:36 ===
+rss_queue <0.35.0>:  `update_queue`: same_item
+
+=INFO REPORT==== 25-May-2016::10:06:36 ===
+rss_queue <0.35.0>:  `update_queue`: same_item
+
+=INFO REPORT==== 25-May-2016::10:06:36 ===
+rss_queue <0.35.0>:  `update_queue`: same_item
+
+=INFO REPORT==== 25-May-2016::10:06:36 ===
+rss_queue <0.35.0>:  `update_queue`: same_item
+
+=INFO REPORT==== 25-May-2016::10:06:36 ===
+rss_queue <0.35.0>:  `update_queue`: same_item
+
+=INFO REPORT==== 25-May-2016::10:06:36 ===
+rss_queue <0.35.0>:  `update_queue`: same_item
+
+=INFO REPORT==== 25-May-2016::10:06:36 ===
+rss_queue <0.35.0>:  `update_queue`: same_item
+
+=INFO REPORT==== 25-May-2016::10:06:36 ===
+rss_queue <0.35.0>:  `update_queue`: same_item
+
+=INFO REPORT==== 25-May-2016::10:06:36 ===
+rss_queue <0.35.0>:  `update_queue`: same_item
+
+=INFO REPORT==== 25-May-2016::10:06:36 ===
+rss_queue <0.35.0>:  `update_queue`: same_item
+
+=INFO REPORT==== 25-May-2016::10:06:36 ===
+rss_queue <0.35.0>:  `update_queue`: same_item
+
+=INFO REPORT==== 25-May-2016::10:06:36 ===
+rss_queue <0.35.0>:  `update_queue`: same_item
+
+=INFO REPORT==== 25-May-2016::10:06:36 ===
+rss_queue <0.35.0>:  `update_queue`: same_item
+
+=INFO REPORT==== 25-May-2016::10:06:36 ===
+rss_queue <0.35.0>:  `update_queue`: same_item
+
+=INFO REPORT==== 25-May-2016::10:06:36 ===
+rss_queue <0.35.0>:  `update_queue`: same_item
+
+=INFO REPORT==== 25-May-2016::10:06:36 ===
+rss_queue <0.35.0>:  `update_queue`: same_item
+
+=INFO REPORT==== 25-May-2016::10:06:36 ===
+rss_queue <0.35.0>:  `update_queue`: same_item
+
+=INFO REPORT==== 25-May-2016::10:06:36 ===
+rss_queue <0.35.0>:  `update_queue`: same_item
+
+=INFO REPORT==== 25-May-2016::10:06:36 ===
+rss_queue <0.35.0>:  `update_queue`: same_item
+
+=INFO REPORT==== 25-May-2016::10:06:36 ===
+rss_queue <0.35.0>:  `update_queue`: same_item
+
+=INFO REPORT==== 25-May-2016::10:06:36 ===
+rss_queue <0.35.0>:  `update_queue`: same_item
+
+=INFO REPORT==== 25-May-2016::10:06:36 ===
+rss_queue <0.35.0>:  `update_queue`: same_item
+
+=INFO REPORT==== 25-May-2016::10:06:36 ===
+rss_queue <0.35.0>:  `update_queue`: same_item
+
+=INFO REPORT==== 25-May-2016::10:06:36 ===
+rss_queue <0.35.0>:  `update_queue`: same_item
+
+=INFO REPORT==== 25-May-2016::10:06:36 ===
+rss_queue <0.35.0>:  `update_queue`: same_item
+
+=INFO REPORT==== 25-May-2016::10:06:36 ===
+rss_queue <0.35.0>:  `update_queue`: same_item
+
+=INFO REPORT==== 25-May-2016::10:06:36 ===
+rss_queue <0.35.0>:  `update_queue`: same_item
+
+=INFO REPORT==== 25-May-2016::10:06:36 ===
+rss_queue <0.35.0>:  `update_queue`: same_item
+
+=INFO REPORT==== 25-May-2016::10:06:36 ===
+rss_queue <0.35.0>:  `update_queue`: same_item
+
+=INFO REPORT==== 25-May-2016::10:06:36 ===
+rss_queue <0.35.0>:  `update_queue`: same_item
+
+=INFO REPORT==== 25-May-2016::10:06:36 ===
+rss_queue <0.35.0>:  `update_queue`: same_item
+
+=INFO REPORT==== 25-May-2016::10:06:36 ===
+rss_queue <0.35.0>:  `update_queue`: same_item
+
+=INFO REPORT==== 25-May-2016::10:06:36 ===
+rss_queue <0.35.0>:  `update_queue`: same_item
+
+=INFO REPORT==== 25-May-2016::10:06:36 ===
+rss_queue <0.35.0>:  `update_queue`: same_item
+
+=INFO REPORT==== 25-May-2016::10:06:36 ===
+rss_queue <0.35.0>:  `update_queue`: same_item
+
+=INFO REPORT==== 25-May-2016::10:06:36 ===
+rss_queue <0.35.0>:  `update_queue`: same_item
+
+=INFO REPORT==== 25-May-2016::10:06:36 ===
+rss_queue <0.35.0>:  `update_queue`: same_item
+
+=INFO REPORT==== 25-May-2016::10:06:36 ===
+rss_queue <0.35.0>:  `update_queue`: same_item
+
+=INFO REPORT==== 25-May-2016::10:06:36 ===
+rss_queue <0.35.0>:  `update_queue`: same_item
+
+=INFO REPORT==== 25-May-2016::10:06:36 ===
+rss_queue <0.35.0>:  `update_queue`: same_item
+
+=INFO REPORT==== 25-May-2016::10:06:36 ===
+rss_queue <0.35.0>:  `update_queue`: same_item
+
+=INFO REPORT==== 25-May-2016::10:06:36 ===
+rss_queue <0.35.0>:  `update_queue`: same_item
+
+=INFO REPORT==== 25-May-2016::10:06:36 ===
+rss_queue <0.35.0>:  `update_queue`: same_item
+
+=INFO REPORT==== 25-May-2016::10:06:36 ===
+rss_queue <0.35.0>:  `update_queue`: same_item
+
+=INFO REPORT==== 25-May-2016::10:06:36 ===
+rss_queue <0.35.0>:  `update_queue`: same_item
+
+=INFO REPORT==== 25-May-2016::10:06:36 ===
+rss_queue <0.35.0>:  `update_queue`: same_item
+
+=INFO REPORT==== 25-May-2016::10:06:36 ===
+rss_queue <0.35.0>:  `update_queue`: same_item
+
+=INFO REPORT==== 25-May-2016::10:06:36 ===
+rss_queue <0.35.0>:  `update_queue`: same_item
+
+=INFO REPORT==== 25-May-2016::10:06:36 ===
+rss_queue <0.35.0>:  `update_queue`: same_item
+
+=INFO REPORT==== 25-May-2016::10:06:37 ===
+rss_queue <0.35.0>:  `update_queue`: same_item
+
+=INFO REPORT==== 25-May-2016::10:06:37 ===
+rss_queue <0.35.0>:  `update_queue`: same_item
+
+=INFO REPORT==== 25-May-2016::10:06:37 ===
+rss_queue <0.35.0>:  `update_queue`: same_item
+
+=INFO REPORT==== 25-May-2016::10:06:37 ===
+rss_queue <0.35.0>:  `update_queue`: same_item
+
+=INFO REPORT==== 25-May-2016::10:06:37 ===
+rss_queue <0.35.0>:  `update_queue`: same_item
+
+=INFO REPORT==== 25-May-2016::10:06:37 ===
+rss_queue <0.35.0>:  `update_queue`: same_item
+
+=INFO REPORT==== 25-May-2016::10:06:37 ===
+rss_queue <0.35.0>:  `update_queue`: same_item
+
+=INFO REPORT==== 25-May-2016::10:06:37 ===
+rss_queue <0.35.0>:  `update_queue`: same_item
+
+=INFO REPORT==== 25-May-2016::10:06:37 ===
+rss_queue <0.35.0>:  `update_queue`: same_item
+
+=INFO REPORT==== 25-May-2016::10:06:37 ===
+rss_queue <0.35.0>:  `update_queue`: same_item
+
+=INFO REPORT==== 25-May-2016::10:06:37 ===
+rss_queue <0.35.0>:  `update_queue`: same_item
+
+=INFO REPORT==== 25-May-2016::10:06:37 ===
+rss_queue <0.35.0>:  `update_queue`: same_item
